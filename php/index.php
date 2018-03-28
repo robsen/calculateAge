@@ -10,10 +10,23 @@
     <body>
         <h1>Age Calculation</h1>
 
-        <form method="POST" action="age.php">
+        <form method="POST" action="index.php">
             <label for="birthyear">Year of Birth:</label>
-            <input type="text" id="birthyear" name="birthyear">
+            <input type="text" id="birthyear" name="birthyear" autofocus autocomplete="off">
             <button type="submit">Calculate</button>
         </form>
+		<?php
+			// year of birth entered?
+			if (isset($_POST['birthyear']) && 
+				is_numeric($_POST['birthyear']))
+			{
+				// calculate age
+				$currentYear = date('Y'); // get current year
+				$age = $currentYear - (int)$_POST['birthyear'];
+
+				// show age
+				echo '<p>Age +/-1 = ' . $age;
+			}
+		?>
     </body>
 </html>
