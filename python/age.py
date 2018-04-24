@@ -10,12 +10,11 @@ def main():
 
 	birthday = input("Birthday: ")
 	day, month, year = \
-		birthday.split('.')
+		map(
+			int,
+			birthday.split('.'))
 	dateOfBirth = \
-		date(
-			int(year),
-			int(month),
-			int(day))
+		date(year, month, day)
 	today = date.today()
 	
 	ageInDays = (today - dateOfBirth).days
