@@ -1,19 +1,28 @@
 # run:  python -tt age.py
 
 from datetime import date
+from datetime import timedelta
 
 
 def main():
-    print("Imprecise Age Calculation")
-    print("=========================\n")
+	print("Age Calculation")
+	print("===============\n")
 
-    birthYear = int(input("Year of birth:"))
-    today = date.today()
-
-    age = today.year - birthYear
-    print("Age +/-1 =", age, "years")
+	birthday = input("Birthday: ")
+	day, month, year = \
+		birthday.split('.')
+	dateOfBirth = \
+		date(
+			int(year),
+			int(month),
+			int(day))
+	today = date.today()
+	
+	ageInDays = (today - dateOfBirth).days
+	ageInYears = int(ageInDays / 365)
+	print("Age =", ageInYears, "years")
 
 
 # run this module only directly
 if (__name__ == "__main__"):
-    main()
+	main()
